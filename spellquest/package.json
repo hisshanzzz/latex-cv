@@ -1,0 +1,17 @@
+{
+  "name": "spellquest",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SpellQuest by English Pro Hub — spelling bee with Asgardeo login and Netlify APIs",
+  "scripts": {
+    "dev": "npx netlify dev",
+    "build": "echo Static site — no build step"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^9.1.1",
+    "jose": "^5.9.6"
+  },
+  "devDependencies": {
+    "@netlify/functions": "^3.0.0"
+  }
+}

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpellQuest by English Pro Hub</title>
+  <meta name="description" content="SpellQuest by English Pro Hub — free spelling bee and letter hive game for students from Grade 1 to A/L and beyond." />
+  <meta property="og:title" content="SpellQuest by English Pro Hub" />
+  <meta property="og:description" content="Free spelling bee and letter hive game for Grades 1–13 and students." />
+  <meta property="og:image" content="assets/spellquest-hero.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/english-pro-hub-logo.png" />
+</head>
+<body>
+  <div class="bg-mesh" aria-hidden="true">
+    <img class="bg-photo bg-photo-a" src="assets/spellquest-hero.png" alt="" />
+    <img class="bg-photo bg-photo-b" src="assets/spellquest-stage.png" alt="" />
+    <div class="bg-veil"></div>
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="#" id="brand-home">
+      <img src="assets/english-pro-hub-logo.png" alt="English Pro Hub logo" class="brand-logo" width="44" height="44" />
+      <span class="brand-text">
+        <strong>SpellQuest</strong>
+        <small>by English Pro Hub</small>
+      </span>
+    </a>
+    <div class="topbar-actions">
+      <div id="auth-bar" class="auth-bar"></div>
+      <button type="button" class="ghost-btn" id="btn-leaderboard">Scores</button>
+      <button type="button" class="ghost-btn" id="btn-progress" hidden>Progress</button>
+      <button type="button" class="ghost-btn" id="btn-home" hidden>Home</button>
+    </div>
+  </header>
+
+  <main id="app">
+    <!-- HOME -->
+    <section class="screen" id="screen-home" data-screen="home">
+      <div class="hero">
+        <div class="hero-media" aria-hidden="true">
+          <img src="assets/spellquest-hero.png" alt="" class="hero-img" />
+          <div class="hero-veil"></div>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow">Free spelling arena for every stage</p>
+          <h1>SpellQuest</h1>
+          <p class="byline">by English Pro Hub</p>
+          <p class="lede">
+            Train like a contestant — Classic Bee, Letter Hive, and six rising tiers.
+          </p>
+          <div class="cta-row">
+            <button type="button" class="primary-btn" id="btn-start">Start playing</button>
+            <button type="button" class="secondary-btn" id="btn-how">How it works</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-strip" aria-label="Game stats">
+        <div><span>500</span> words</div>
+        <div><span>6</span> tiers</div>
+        <div><span>30</span> stages</div>
+        <div><span>2</span> modes</div>
+      </div>
+
+      <aside class="founder-band">
+        <div class="founder-band-bg" aria-hidden="true">
+          <img src="assets/spellquest-stage.png" alt="" />
+        </div>
+        <img src="assets/hisshan-avatar.jpg" alt="Mohamed Hisshan, founder of English Pro Hub" class="founder-photo" width="120" height="120" />
+        <div class="founder-band-copy">
+          <p class="founder-label">Founded by</p>
+          <h2>Mohamed Hisshan</h2>
+          <p>English Coach · Debater · Exam Invigilator, British Council · Toastmaster · Founder, English Pro Hub</p>
+        </div>
+        <img src="assets/english-pro-hub-logo.png" alt="English Pro Hub" class="founder-brand-logo" width="64" height="64" />
+      </aside>
+
+      <div class="hub-cta-band">
+        <div>
+          <h3>Want coaching, not just a game?</h3>
+          <p>Join English Pro Hub for speech, oratory, and English Day contest prep — affordable or free.</p>
+        </div>
+        <div class="cta-row">
+          <a class="primary-btn" id="hub-whatsapp" href="https://wa.me/94774932692" target="_blank" rel="noopener">WhatsApp English Pro Hub</a>
+          <a class="secondary-btn" href="about.html">About &amp; contact</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERBOARD -->
+    <section class="screen hidden" id="screen-leaderboard" data-screen="leaderboard">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Scoreboard</h2>
+            <p class="panel-sub">Top bee scores (cloud board on Netlify deploy).</p>
+          </div>
+          <div class="cta-row">
+            <button type="button" class="secondary-btn" id="btn-leaderboard-refresh">Refresh</button>
+            <button type="button" class="ghost-btn" id="btn-leaderboard-back">Back</button>
+          </div>
+        </div>
+        <ol class="leaderboard-list" id="leaderboard-list">
+          <li>Open Scores after a stage clear.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- HOW -->
+    <section class="screen hidden" id="screen-how" data-screen="how">
+      <div class="panel narrow">
+        <h2>How SpellQuest works</h2>
+        <ol class="how-list">
+          <li>Pick your track: Grade 1–5, 6–9, 10–11, 12–13, or Students.</li>
+          <li>Choose <strong>Classic Bee</strong> (hear &amp; spell) or <strong>Letter Hive</strong> (build words from 7 letters).</li>
+          <li>Climb 6 tiers × 5 stages. Earn streaks, use limited hints, and unlock the next stage.</li>
+          <li>Browser voice reads each bee word — turn up your volume.</li>
+        </ol>
+        <button type="button" class="primary-btn" id="btn-how-back">Got it — start</button>
+      </div>
+    </section>
+
+    <!-- TRACK -->
+    <section class="screen hidden" id="screen-track" data-screen="track">
+      <div class="panel">
+        <h2>Choose your track</h2>
+        <p class="panel-sub">Word difficulty matches your stage. You can switch anytime.</p>
+        <div class="track-grid" id="track-grid"></div>
+      </div>
+    </section>
+
+    <!-- MODE -->
+    <section class="screen hidden" id="screen-mode" data-screen="mode">
+      <div class="panel">
+        <h2>Choose a mode</h2>
+        <p class="panel-sub" id="mode-track-label"></p>
+        <div class="mode-grid">
+          <button type="button" class="mode-card" id="mode-bee">
+            <img src="assets/spellquest-bee-mode.png" alt="" class="mode-art" width="280" height="280" />
+            <span class="mode-kicker">Voice · lives · hints</span>
+            <strong>Classic Bee</strong>
+            <p>Hear the word, type the spelling, climb 30 stages across 6 tiers.</p>
+          </button>
+          <button type="button" class="mode-card" id="mode-hive">
+            <img src="assets/spellquest-hive-mode.png" alt="" class="mode-art" width="280" height="280" />
+            <span class="mode-kicker">7 letters · find words</span>
+            <strong>Letter Hive</strong>
+            <p>Use the hive letters to spell as many pool words as you can. Center letter required.</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAP / TIERS -->
+    <section class="screen hidden" id="screen-map" data-screen="map">
+      <div class="panel">
+        <div class="panel-head">
+          <div class="map-title-row">
+            <img src="assets/spellquest-trophy.png" alt="" class="map-trophy" width="56" height="56" />
+            <div>
+              <h2>Classic Bee map</h2>
+              <p class="panel-sub" id="map-sub"></p>
+            </div>
+          </div>
+          <button type="button" class="secondary-btn" id="btn-map-back">Back</button>
+        </div>
+        <div class="tier-list" id="tier-list"></div>
+      </div>
+    </section>
+
+    <!-- CLASSIC BEE PLAY -->
+    <section class="screen hidden" id="screen-bee" data-screen="bee">
+      <div class="play-shell">
+        <div class="hud">
+          <div class="hud-item"><span>Tier</span><strong id="hud-tier">1</strong></div>
+          <div class="hud-item"><span>Stage</span><strong id="hud-stage">1</strong></div>
+          <div class="hud-item"><span>Word</span><strong id="hud-word">1/8</strong></div>
+          <div class="hud-item"><span>Score</span><strong id="hud-score">0</strong></div>
+          <div class="hud-item"><span>Lives</span><strong id="hud-lives">♥♥♥</strong></div>
+          <div class="hud-item"><span>Hints</span><strong id="hud-hints">3</strong></div>
+        </div>
+
+        <div class="bee-card">
+          <p class="bee-prompt" id="bee-prompt">Listen carefully…</p>
+          <p class="bee-def" id="bee-def"></p>
+          <p class="bee-hint" id="bee-hint" hidden></p>
+          <label class="voice-row" for="voice-select">
+            <span>Voice</span>
+            <select id="voice-select" aria-label="Choose speaking voice"></select>
+          </label>
+          <div class="bee-actions">
+            <button type="button" class="secondary-btn" id="btn-hear" aria-label="Hear the spelling word spoken aloud">Hear word</button>
+            <button type="button" class="secondary-btn" id="btn-hear-slow" aria-label="Hear the word spoken very slowly">Hear slowly</button>
+            <button type="button" class="ghost-btn" id="btn-hint">Use hint</button>
+          </div>
+          <form id="bee-form" autocomplete="off">
+            <label class="sr-only" for="bee-input">Type the spelling</label>
+            <input id="bee-input" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Type the spelling…" />
+            <button type="submit" class="primary-btn">Submit</button>
+          </form>
+          <p class="bee-feedback" id="bee-feedback" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HIVE -->
+    <section class="screen hidden" id="screen-hive" data-screen="hive">
+      <div class="play-shell">
+        <div class="hud">
+          <div class="hud-item"><span>Found</span><strong id="hive-found">0</strong></div>
+          <div class="hud-item"><span>Target</span><strong id="hive-target">0</strong></div>
+          <div class="hud-item"><span>Score</span><strong id="hive-score">0</strong></div>
+          <div class="hud-item"><span>Track</span><strong id="hive-track">—</strong></div>
+        </div>
+        <div class="hive-layout">
+          <div class="hive-board">
+            <div class="hex-grid" id="hex-grid"></div>
+            <p class="hive-guess" id="hive-guess"></p>
+            <div class="hive-controls">
+              <button type="button" class="ghost-btn" id="hive-delete">Delete</button>
+              <button type="button" class="secondary-btn" id="hive-shuffle">Shuffle</button>
+              <button type="button" class="primary-btn" id="hive-enter">Enter</button>
+            </div>
+            <p class="bee-feedback" id="hive-feedback" role="status" aria-live="polite"></p>
+            <button type="button" class="ghost-btn" id="hive-new">New hive</button>
+          </div>
+          <div class="hive-words">
+            <h3>Words found</h3>
+            <ul id="hive-word-list"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section class="screen hidden" id="screen-result" data-screen="result">
+      <div class="panel narrow result-panel">
+        <p class="eyebrow" id="result-eyebrow">Stage clear</p>
+        <h2 id="result-title">Well spelled!</h2>
+        <p id="result-body"></p>
+        <div class="cta-row">
+          <button type="button" class="primary-btn" id="result-primary">Continue</button>
+          <button type="button" class="secondary-btn" id="result-secondary">Map</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <img src="assets/english-pro-hub-logo.png" alt="" width="28" height="28" />
+    <p>
+      <strong>SpellQuest</strong> by English Pro Hub · Free for students · Colombo ·
+      <a href="https://wa.me/94774932692" target="_blank" rel="noopener">WhatsApp</a> ·
+      <a href="mailto:englishprohubclass@gmail.com">Hub email</a> ·
+      <a href="about.html">About</a> ·
+      <a href="privacy.html">Privacy</a> ·
+      <a href="contact.html">Contact</a> ·
+      <a href="setup.html">Setup</a> ·
+      <a href="teacher.html">Teacher</a>
+    </p>
+  </footer>
+
+  <script src="https://unpkg.com/@asgardeo/auth-spa@latest/dist/asgardeo-spa.production.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="data/words.js"></script>
+  <script src="app.js"></script>
+  <script>
+    (function () {
+      var cfg = window.SPELLQUEST_CONFIG || {};
+      var wa = document.getElementById("hub-whatsapp");
+      if (wa && cfg.hubWhatsApp) wa.href = cfg.hubWhatsApp;
+    })();
+  </script>
+</body>
+</html>
