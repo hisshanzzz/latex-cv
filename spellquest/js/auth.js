@@ -145,6 +145,9 @@
     }
     el.innerHTML = `
       <button type="button" class="primary-btn auth-login-btn" id="btn-signin">Sign in with Asgardeo</button>
+      <span class="auth-hint">New? Use <strong>Register</strong> on the next screen
+        <a href="setup.html#self-registration">(enable self-registration)</a>
+        — or ask your teacher to create your account.</span>
     `;
     const btn = document.getElementById("btn-signin");
     if (btn) btn.addEventListener("click", () => signIn());

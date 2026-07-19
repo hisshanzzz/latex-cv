@@ -908,6 +908,20 @@ main {
   font-size: 0.88rem !important;
 }
 
+.auth-hint {
+  flex: 1 1 100%;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: var(--ink-soft);
+  max-width: 22rem;
+}
+
+.auth-hint a {
+  color: var(--gold-soft);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .hub-cta-band {
   margin-top: 1.25rem;
   padding: 1.25rem 1.4rem;

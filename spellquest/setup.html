@@ -75,6 +75,52 @@
       <li>Redeploy after any config change.</li>
     </ol>
 
+    <h3 id="self-registration">B1 — Let students create accounts (self-registration)</h3>
+    <p class="panel-sub">
+      Sign-in alone does <strong>not</strong> create accounts. Enable self-registration once in the EU console;
+      then SpellQuest’s <strong>Sign in</strong> page shows a <strong>Register</strong> link, and students can also use My Account.
+      This is available on Asgardeo’s free plan (not a paid-only toggle).
+    </p>
+    <p class="panel-sub"><strong>Exact click-path (EU console):</strong></p>
+    <ol class="how-list">
+      <li>Open <a href="https://console.eu.asgardeo.io/t/englishprohub" target="_blank" rel="noopener">console.eu.asgardeo.io/t/englishprohub</a> (must be org owner/admin).</li>
+      <li>In the left sidebar, click <strong>Login &amp; Registration</strong>
+        (sometimes listed near Security / Branding — <em>not</em> under the SpellQuest app’s Protocol tab).</li>
+      <li>Under <strong>User Onboarding</strong>, click <strong>Self Registration</strong>.</li>
+      <li>Turn the <strong>Self Registration</strong> toggle <strong>On</strong>.</li>
+      <li>Recommended for classroom testing:
+        <ul>
+          <li><strong>Account verification</strong> — On (email confirm)</li>
+          <li><strong>Activate account immediately</strong> — On (so they can try login while verifying)</li>
+        </ul>
+      </li>
+      <li>Save / leave the page (settings apply org-wide).</li>
+      <li>Test: open SpellQuest → <strong>Sign in with Asgardeo</strong> → on the Asgardeo page click <strong>Register</strong>
+        (or go to <a href="https://myaccount.eu.asgardeo.io/t/englishprohub" target="_blank" rel="noopener">myaccount.eu.asgardeo.io/t/englishprohub</a> → <strong>Register</strong>).</li>
+    </ol>
+    <p class="panel-sub">
+      Docs: <a href="https://wso2.com/asgardeo/docs/guides/account-configurations/user-onboarding/self-registration/" target="_blank" rel="noopener">Self registration</a>
+      · <a href="https://wso2.com/asgardeo/docs/guides/user-self-service/self-register/" target="_blank" rel="noopener">How users self-register</a>.
+      Optional: <strong>Flows → Self Registration</strong> is only for customizing the registration form (Flow Builder preview) — it does <em>not</em> replace the toggle above.
+    </p>
+
+    <h3 id="create-users">B1b — If you cannot find Self Registration (create first test user)</h3>
+    <p class="panel-sub">Fastest path for one student/admin password login — no self-reg needed:</p>
+    <ol class="how-list">
+      <li>Console → <strong>User Management</strong> → <strong>Users</strong>.</li>
+      <li>Click <strong>Add User</strong> → <strong>Single User</strong>.</li>
+      <li>Enter email / name.</li>
+      <li>Choose one:
+        <ul>
+          <li><strong>Set a password for the user</strong> — you type a temporary password; student signs in with that email + password on SpellQuest immediately.</li>
+          <li><strong>Invite user to set their own password</strong> (ask-password) — Asgardeo emails a link; student sets the password, then uses Sign in on SpellQuest.</li>
+        </ul>
+      </li>
+      <li>Finish. Then SpellQuest → <strong>Sign in with Asgardeo</strong> → email + password.</li>
+      <li>If the invite email expired: open the user profile → use <strong>Resend</strong> / set password again
+        (recovery scenario <code>ASK_PASSWORD</code>).</li>
+    </ol>
+
     <h3 id="branding">B2 — Asgardeo Branding (SpellQuest colours)</h3>
     <p class="panel-sub">Console → <strong>Branding → Styles &amp; Text</strong> → choose <strong>Application: SpellQuest</strong> (or Organization) → Theme: <strong>Dark</strong> → paste these hex values → <strong>Save &amp; Publish</strong>.</p>
 
