@@ -36,13 +36,18 @@
     }
 
     const c = cfg();
+    const region = (c.region || "us").toLowerCase() === "eu" ? "eu" : "us";
+    const apiHost =
+      region === "eu" ? "https://api.eu.asgardeo.io" : "https://api.asgardeo.io";
+    // Prefer explicit baseUrl; never put Organization UUID in /t/...
+    const baseUrl = c.baseUrl || `${apiHost}/t/${c.org}`;
     const client = window.AsgardeoAuth.AsgardeoSPAClient.getInstance();
     state.client = client;
     await client.initialize({
       signInRedirectURL: c.signInRedirectURL || window.location.origin + "/",
       signOutRedirectURL: c.signOutRedirectURL || window.location.origin + "/",
       clientID: c.clientId,
-      baseUrl: `https://api.asgardeo.io/t/${c.org}`,
+      baseUrl,
       scope: c.scope || ["openid", "profile", "email"],
     });
 

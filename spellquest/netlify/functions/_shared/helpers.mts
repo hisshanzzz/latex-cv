@@ -55,6 +55,14 @@ export async function getAuthUser(req: Request): Promise<AuthUser | null> {
     process.env.ASGARDEO_ORG ||
     "";
 
+  const regionRaw =
+    (typeof Netlify !== "undefined" && Netlify.env.get("ASGARDEO_REGION")) ||
+    process.env.ASGARDEO_REGION ||
+    "eu";
+  const region = String(regionRaw).toLowerCase() === "us" ? "us" : "eu";
+  const apiHost =
+    region === "eu" ? "https://api.eu.asgardeo.io" : "https://api.asgardeo.io";
+
   if (!org) {
     // Dev fallback: decode payload without verify (local only / misconfigured verify)
     try {
@@ -78,16 +86,10 @@ export async function getAuthUser(req: Request): Promise<AuthUser | null> {
   }
 
   try {
-    const issuer = `https://api.asgardeo.io/t/${org}/oauth2/token`;
-    const jwks = createRemoteJWKSet(
-      new URL(`https://api.asgardeo.io/t/${org}/oauth2/jwks`)
-    );
+    const issuer = `${apiHost}/t/${org}/oauth2/token`;
+    const jwks = createRemoteJWKSet(new URL(`${apiHost}/t/${org}/oauth2/jwks`));
     const { payload } = await jwtVerify(token, jwks, {
-      issuer: [
-        issuer,
-        `https://api.asgardeo.io/t/${org}`,
-        `https://api.asgardeo.io/t/${org}/`,
-      ],
+      issuer: [issuer, `${apiHost}/t/${org}`, `${apiHost}/t/${org}/`],
     });
     return {
       sub: String(payload.sub),

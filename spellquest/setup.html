@@ -1,146 +1,154 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Setup — SpellQuest (Asgardeo + Netlify)</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="assets/english-pro-hub-logo.png" />
-</head>
-<body>
-  <div class="bg-mesh" aria-hidden="true">
-    <img class="bg-photo bg-photo-a" src="assets/spellquest-stage.png" alt="" />
-    <div class="bg-veil"></div>
-  </div>
-  <header class="topbar">
-    <a class="brand" href="index.html">
-      <img src="assets/english-pro-hub-logo.png" alt="" class="brand-logo" width="44" height="44" />
-      <span class="brand-text"><strong>SpellQuest</strong><small>Setup</small></span>
-    </a>
-  </header>
-  <main class="panel" style="max-width:760px;margin:1.5rem auto;">
-    <h2>Launch setup (Phase B + C)</h2>
-    <p class="panel-sub">Guest play works now. Login + cloud scores need the steps below.</p>
-    <p class="panel-sub">Live site: <a href="https://spellquest-englishprohub.netlify.app">spellquest-englishprohub.netlify.app</a></p>
-    <p class="panel-sub">Hub contact: WhatsApp <a href="https://wa.me/94774932692">+94 77 493 2692</a> ·
-      <a href="mailto:englishprohubclass@gmail.com">englishprohubclass@gmail.com</a> ·
-      personal <a href="mailto:hisshanm@yahoo.com">hisshanm@yahoo.com</a>
-    </p>
-
-    <h3 id="asgardeo">B — Asgardeo login (WSO2)</h3>
-    <ol class="how-list">
-      <li>Sign up free at <a href="https://wso2.com/asgardeo/" target="_blank" rel="noopener">Asgardeo</a>.</li>
-      <li>Create an organization (example: <code>englishprohub</code>). Use the exact org name from your Console URL.</li>
-      <li>Applications → New → <strong>Single-Page Application</strong> named SpellQuest.</li>
-      <li>Under Protocol, set these exactly:
-        <ul>
-          <li><strong>Authorized redirect URLs</strong> (one per line):
-            <ul>
-              <li><code>https://spellquest-englishprohub.netlify.app/</code></li>
-              <li><code>http://127.0.0.1:8888/</code></li>
-              <li><code>http://localhost:8888/</code></li>
-            </ul>
-          </li>
-          <li><strong>Allowed origins</strong>:
-            <ul>
-              <li><code>https://spellquest-englishprohub.netlify.app</code></li>
-              <li><code>http://127.0.0.1:8888</code></li>
-              <li><code>http://localhost:8888</code></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>Copy <strong>Client ID</strong> from the application.</li>
-      <li>Open <code>js/config.js</code> and set:
-        <ul>
-          <li><code>asgardeo.org</code> = your organization name</li>
-          <li><code>asgardeo.clientId</code> = Client ID</li>
-        </ul>
-        (Redirect URLs are already dynamic via <code>window.location.origin + "/"</code>.)
-      </li>
-      <li>In Netlify → Site settings → Environment variables, add:
-        <ul>
-          <li><code>ASGARDEO_ORG</code> = your org name (same as config)</li>
-          <li><code>TEACHER_PIN</code> = already set (<code>246810</code>)</li>
-        </ul>
-      </li>
-      <li>Redeploy after filling Client ID + org.</li>
-    </ol>
-
-    <h3 id="branding">B2 — Asgardeo Branding (SpellQuest colours)</h3>
-    <p class="panel-sub">Console → <strong>Branding → Styles &amp; Text</strong> → choose <strong>Application: SpellQuest</strong> (or Organization) → Theme: <strong>Dark</strong> → paste these hex values → <strong>Save &amp; Publish</strong>.</p>
-
-    <h4>General</h4>
-    <ul class="how-list">
-      <li>Organization Display Name: <code>English Pro Hub</code></li>
-      <li>Contact Email: <code>englishprohubclass@gmail.com</code></li>
-      <li>Logo URL: <code>https://spellquest-englishprohub.netlify.app/assets/english-pro-hub-logo.png</code></li>
-      <li>Logo Alt Text: <code>English Pro Hub</code></li>
-      <li>Favicon URL: <code>https://spellquest-englishprohub.netlify.app/assets/english-pro-hub-logo.png</code></li>
-    </ul>
-
-    <h4>Color palette (Dark theme)</h4>
-    <ul class="how-list">
-      <li>Primary Color: <code>#1fa88f</code> (teal — primary buttons / links)</li>
-      <li>Secondary Color: <code>#e0b13a</code> (gold accent)</li>
-      <li>Main Background Color: <code>#071816</code> (dark paper)</li>
-      <li>Main Surface Background Color: <code>#0a2a26</code> (teal panel)</li>
-      <li>Light Surface Background Color: <code>#103a34</code></li>
-      <li>Dark Surface Background Color: <code>#041210</code></li>
-      <li>Inverted Surface Background Color: <code>#0c5c4f</code> (teal-deep)</li>
-      <li>Default Outline Color: <code>#e0b13a</code> (gold line)</li>
-      <li>Primary Text Color: <code>#f3efe4</code> (cream / ink)</li>
-      <li>Secondary Text Color: <code>#c7d0c8</code> (soft ink)</li>
-    </ul>
-
-    <h4>Buttons &amp; login box</h4>
-    <ul class="how-list">
-      <li>Primary Button Font Color: <code>#f3efe4</code></li>
-      <li>Primary Button Border Radius: <code>22</code></li>
-      <li>Secondary Button Font Color: <code>#f0d48a</code></li>
-      <li>Secondary Button Border Radius: <code>22</code></li>
-      <li>Login Page Background: <code>#071816</code></li>
-      <li>Login Page Font Color: <code>#f3efe4</code></li>
-      <li>Login Box Background: <code>#0a2a26</code></li>
-      <li>Login Box Font Color: <code>#f3efe4</code></li>
-      <li>Login Box Border Color: <code>#e0b13a</code></li>
-      <li>Login Box Border Radius: <code>22</code></li>
-      <li>Input Background: <code>#103a34</code></li>
-      <li>Input Font Color: <code>#f3efe4</code></li>
-      <li>Input Border Color: <code>#e0b13a</code></li>
-    </ul>
-
-    <h4>Optional font (matches SpellQuest body)</h4>
-    <ul class="how-list">
-      <li>Font Import URL: <code>https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&amp;display=swap</code></li>
-      <li>Font Family: <code>Figtree</code></li>
-    </ul>
-
-    <h3 id="netlify">C — Hosting + APIs (Netlify)</h3>
-    <p>We use <strong>Netlify Functions + Blobs</strong> for progress sync, leaderboard, and teacher tools.</p>
-    <ol class="how-list">
-      <li><code>cd spellquest</code></li>
-      <li><code>npm install</code></li>
-      <li><code>npx netlify login</code></li>
-      <li>Local API test: <code>npx netlify dev</code> (usually http://127.0.0.1:8888)</li>
-      <li>Production: <code>npx netlify deploy --prod --dir=.</code></li>
-    </ol>
-
-    <h3>What each API does</h3>
-    <ul class="how-list">
-      <li><code>/api/progress</code> — save/load progress when signed in</li>
-      <li><code>/api/leaderboard</code> — public scores</li>
-      <li><code>/api/teacher</code> — classroom codes + board overview (PIN protected)</li>
-    </ul>
-
-    <h3>Choreo later?</h3>
-    <p>If you outgrow Netlify Functions, the same API routes can be re-hosted on WSO2 Choreo. Start here so students get a working link first.</p>
-
-    <div class="cta-row" style="margin-top:1.25rem;">
-      <a class="primary-btn" href="index.html">Back to game</a>
-      <a class="secondary-btn" href="teacher.html">Teacher tools</a>
-    </div>
-  </main>
-</body>
-</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setup — SpellQuest (Asgardeo + Netlify)</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/english-pro-hub-logo.png" />
+</head>
+<body>
+  <div class="bg-mesh" aria-hidden="true">
+    <img class="bg-photo bg-photo-a" src="assets/spellquest-stage.png" alt="" />
+    <div class="bg-veil"></div>
+  </div>
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <img src="assets/english-pro-hub-logo.png" alt="" class="brand-logo" width="44" height="44" />
+      <span class="brand-text"><strong>SpellQuest</strong><small>Setup</small></span>
+    </a>
+  </header>
+  <main class="panel" style="max-width:760px;margin:1.5rem auto;">
+    <h2>Launch setup (Phase B + C)</h2>
+    <p class="panel-sub">Guest play works now. Login + cloud scores need the steps below.</p>
+    <p class="panel-sub">Live site: <a href="https://spellquest-englishprohub.netlify.app">spellquest-englishprohub.netlify.app</a></p>
+    <p class="panel-sub">Hub contact: WhatsApp <a href="https://wa.me/94774932692">+94 77 493 2692</a> ·
+      <a href="mailto:englishprohubclass@gmail.com">englishprohubclass@gmail.com</a> ·
+      personal <a href="mailto:hisshanm@yahoo.com">hisshanm@yahoo.com</a>
+    </p>
+
+    <h3 id="asgardeo">B — Asgardeo login (WSO2)</h3>
+    <p class="panel-sub"><strong>English Pro Hub is on the EU region.</strong> Use EU links, not the US ones:
+      Console <code>https://console.eu.asgardeo.io/t/englishprohub</code> ·
+      My Account <code>https://myaccount.eu.asgardeo.io/t/englishprohub</code> ·
+      API baseUrl <code>https://api.eu.asgardeo.io/t/englishprohub</code>.
+      The Organization UUID is <em>not</em> the org name in <code>/t/...</code>.
+    </p>
+    <ol class="how-list">
+      <li>Open the <strong>EU</strong> console: <a href="https://console.eu.asgardeo.io/t/englishprohub" target="_blank" rel="noopener">console.eu.asgardeo.io/t/englishprohub</a>.</li>
+      <li>Org name from the URL is <code>englishprohub</code> (already set in <code>js/config.js</code> with <code>region: "eu"</code>).</li>
+      <li>Applications → New → <strong>Single-Page Application</strong> named SpellQuest.</li>
+      <li>Under Protocol, set these exactly:
+        <ul>
+          <li><strong>Authorized redirect URLs</strong> (one per line):
+            <ul>
+              <li><code>https://spellquest-englishprohub.netlify.app/</code></li>
+              <li><code>http://127.0.0.1:8888/</code></li>
+              <li><code>http://localhost:8888/</code></li>
+            </ul>
+          </li>
+          <li><strong>Allowed origins</strong>:
+            <ul>
+              <li><code>https://spellquest-englishprohub.netlify.app</code></li>
+              <li><code>http://127.0.0.1:8888</code></li>
+              <li><code>http://localhost:8888</code></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Copy <strong>Client ID</strong> from the application (already set: <code>7CLd15CM1Xw0HB6VKA6ZtFJaBX8a</code>).</li>
+      <li>In <code>js/config.js</code> confirm:
+        <ul>
+          <li><code>asgardeo.org</code> = <code>englishprohub</code></li>
+          <li><code>asgardeo.region</code> = <code>eu</code></li>
+          <li><code>asgardeo.baseUrl</code> = <code>https://api.eu.asgardeo.io/t/englishprohub</code></li>
+          <li><code>asgardeo.clientId</code> = Client ID</li>
+        </ul>
+      </li>
+      <li>In Netlify → Site settings → Environment variables, set:
+        <ul>
+          <li><code>ASGARDEO_ORG</code> = <code>englishprohub</code></li>
+          <li><code>ASGARDEO_REGION</code> = <code>eu</code></li>
+          <li><code>TEACHER_PIN</code> = already set (<code>246810</code>)</li>
+        </ul>
+      </li>
+      <li>Redeploy after any config change.</li>
+    </ol>
+
+    <h3 id="branding">B2 — Asgardeo Branding (SpellQuest colours)</h3>
+    <p class="panel-sub">Console → <strong>Branding → Styles &amp; Text</strong> → choose <strong>Application: SpellQuest</strong> (or Organization) → Theme: <strong>Dark</strong> → paste these hex values → <strong>Save &amp; Publish</strong>.</p>
+
+    <h4>General</h4>
+    <ul class="how-list">
+      <li>Organization Display Name: <code>English Pro Hub</code></li>
+      <li>Contact Email: <code>englishprohubclass@gmail.com</code></li>
+      <li>Logo URL: <code>https://spellquest-englishprohub.netlify.app/assets/english-pro-hub-logo.png</code></li>
+      <li>Logo Alt Text: <code>English Pro Hub</code></li>
+      <li>Favicon URL: <code>https://spellquest-englishprohub.netlify.app/assets/english-pro-hub-logo.png</code></li>
+    </ul>
+
+    <h4>Color palette (Dark theme)</h4>
+    <ul class="how-list">
+      <li>Primary Color: <code>#1fa88f</code> (teal — primary buttons / links)</li>
+      <li>Secondary Color: <code>#e0b13a</code> (gold accent)</li>
+      <li>Main Background Color: <code>#071816</code> (dark paper)</li>
+      <li>Main Surface Background Color: <code>#0a2a26</code> (teal panel)</li>
+      <li>Light Surface Background Color: <code>#103a34</code></li>
+      <li>Dark Surface Background Color: <code>#041210</code></li>
+      <li>Inverted Surface Background Color: <code>#0c5c4f</code> (teal-deep)</li>
+      <li>Default Outline Color: <code>#e0b13a</code> (gold line)</li>
+      <li>Primary Text Color: <code>#f3efe4</code> (cream / ink)</li>
+      <li>Secondary Text Color: <code>#c7d0c8</code> (soft ink)</li>
+    </ul>
+
+    <h4>Buttons &amp; login box</h4>
+    <ul class="how-list">
+      <li>Primary Button Font Color: <code>#f3efe4</code></li>
+      <li>Primary Button Border Radius: <code>22</code></li>
+      <li>Secondary Button Font Color: <code>#f0d48a</code></li>
+      <li>Secondary Button Border Radius: <code>22</code></li>
+      <li>Login Page Background: <code>#071816</code></li>
+      <li>Login Page Font Color: <code>#f3efe4</code></li>
+      <li>Login Box Background: <code>#0a2a26</code></li>
+      <li>Login Box Font Color: <code>#f3efe4</code></li>
+      <li>Login Box Border Color: <code>#e0b13a</code></li>
+      <li>Login Box Border Radius: <code>22</code></li>
+      <li>Input Background: <code>#103a34</code></li>
+      <li>Input Font Color: <code>#f3efe4</code></li>
+      <li>Input Border Color: <code>#e0b13a</code></li>
+    </ul>
+
+    <h4>Optional font (matches SpellQuest body)</h4>
+    <ul class="how-list">
+      <li>Font Import URL: <code>https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&amp;display=swap</code></li>
+      <li>Font Family: <code>Figtree</code></li>
+    </ul>
+
+    <h3 id="netlify">C — Hosting + APIs (Netlify)</h3>
+    <p>We use <strong>Netlify Functions + Blobs</strong> for progress sync, leaderboard, and teacher tools.</p>
+    <ol class="how-list">
+      <li><code>cd spellquest</code></li>
+      <li><code>npm install</code></li>
+      <li><code>npx netlify login</code></li>
+      <li>Local API test: <code>npx netlify dev</code> (usually http://127.0.0.1:8888)</li>
+      <li>Production: <code>npx netlify deploy --prod --dir=.</code></li>
+    </ol>
+
+    <h3>What each API does</h3>
+    <ul class="how-list">
+      <li><code>/api/progress</code> — save/load progress when signed in</li>
+      <li><code>/api/leaderboard</code> — public scores</li>
+      <li><code>/api/teacher</code> — classroom codes + board overview (PIN protected)</li>
+    </ul>
+
+    <h3>Choreo later?</h3>
+    <p>If you outgrow Netlify Functions, the same API routes can be re-hosted on WSO2 Choreo. Start here so students get a working link first.</p>
+
+    <div class="cta-row" style="margin-top:1.25rem;">
+      <a class="primary-btn" href="index.html">Back to game</a>
+      <a class="secondary-btn" href="teacher.html">Teacher tools</a>
+    </div>
+  </main>
+</body>
+</html>
 
