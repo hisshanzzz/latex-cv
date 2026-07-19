@@ -28,7 +28,7 @@ window.SPELLQUEST_CONFIG = {
   personalEmail: "mailto:hisshanm@yahoo.com",
   asgardeo: {
     // Organization name from Asgardeo Console URL: https://console.asgardeo.io/t/<org>/...
-    org: "SpellQuest",
+    org: "englishprohub",
     // From Asgardeo Console → Applications → SpellQuest → Client ID
     clientId: "7CLd15CM1Xw0HB6VKA6ZtFJaBX8a",
     // Dynamic: matches current host (prod Netlify or local netlify dev)
